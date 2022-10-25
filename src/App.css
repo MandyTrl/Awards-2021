@@ -1,0 +1,115 @@
+h1 {
+  font-size: 3em;
+  text-transform: uppercase;
+}
+h2 {
+  font-size: 1.1em;
+  letter-spacing: 0.1em;
+  font-style: italic;
+  padding: 0.7em;
+  color: rgb(59, 59, 59);
+  text-align: left;
+  padding-left: 1.6em;
+}
+
+p {
+  text-transform: capitalize;
+  font-weight: 500;
+  font-size: 0.7em;
+  min-height: 2em;
+  padding-bottom: 1.2em;
+}
+
+.name_category {
+  background-color: white;
+  width: 70%;
+  margin: 0 auto;
+}
+
+button {
+  background-color: #50B074;
+  border-top: 1px solid white;
+  border-bottom: 1px solid white;
+  border-right: none;
+  border-left: none;
+  width: 12em;
+  padding: 0.7em;
+  font-size: 0.75em;
+  font-family: 'Philosopher', sans-serif;
+}
+
+button:hover {
+  background-color: #155f42;
+  color: white;
+}
+
+.App {
+  text-align: center;
+  font-family: 'Philosopher', sans-serif;
+}
+
+.App-header {
+  background-color: #50B074;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.ballot {
+  padding: 0.5em 0 1.5em 0;
+}
+
+.nominee {
+  color: black;
+  background-color: white;
+  width: 14%;
+  padding: 0.7em 0.3em;
+  margin: 1.1em;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  box-shadow: 10px 9px 10px rgb(38, 38, 38);
+  transition: all 0.5s ease;
+}
+
+.nominee:hover {
+  transform:scale(1.05);
+}
+
+.category {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 80%;
+  margin: 0 auto;
+  padding: 1em;
+}
+
+/*------[ IMAGES ]------*/
+.movie {
+  max-width: 7em;
+  padding: 0.5em;
+}
+
+/* 
+.icon {
+  width: 1.8em;
+} */
+
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&display=swap');
