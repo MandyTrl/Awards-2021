@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {connect} from 'react-redux'; ///Import de Redux
 
 const Category = (props) => {
@@ -9,16 +9,27 @@ const [nomineeSelected, setNomineeSelected] = useState([]);
 //Envoie les données seulement si la V. d'état "nomineeSelected" est vide et si l'élément sélectionné est différent de celui de la V. d'état
 function voteOk(element, categorie) {
 	if (nomineeSelected.length === 0 || nomineeSelected.title !== element.title){
-		alert("Nominee selected !");
+		// alert("Nominee selected !");
 		setNomineeSelected({
 			title : element.title, 
 			category : categorie});
 	} else {
 		setNomineeSelected([]);
 	}
-	nomineeSelected.sendData() 
 }
-console.log("Voici le nominé choisi: ", nomineeSelected.title, ", Pour la catégorie: ", nomineeSelected.category)
+
+//------[ ECOUTE DE LA V. D'ETAT "nomineeSelected" ]------//
+//Envoi des nominés selectionnés au reducer via les props si la V. d'état "nomineeSelected" est vide
+useEffect( ()=>{
+	const sendReducer = ()=> {
+		if(nomineeSelected.length !== 0)props.sendData(nomineeSelected);
+	}
+	sendReducer();
+}, [nomineeSelected])
+console.log(nomineeSelected);
+
+
+// console.log("Voici le nominé choisi: ", nomineeSelected.title, ", Pour la catégorie: ", nomineeSelected.category)
 
 if (props.datas.length > 0){
 //------[ EXPLOITATIONS DES PROPS ]------//
@@ -64,13 +75,14 @@ const nominee = nomineeS.items.map( (nom)=> {
 //------[ ENVOI DES NOMINES SELECTIONNES DANS LE REDUCER ]------//
 function mapDispatchToProps(dispatch) {
 	return {
-	  sendData: function() {
-		  dispatch( {type: "nominee", category: "categorie"} )
+	  sendData: function(nominee) {
+		  dispatch( {type: "addVote", voteSelected: nominee} )
 	  }
 	}
    }   
 
 export default connect(
 	null,
-	mapDispatchToProps
+	mapDispatchToProps,
+	// mapStateToProps,
  )(Category);
